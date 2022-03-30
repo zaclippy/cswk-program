@@ -6,6 +6,8 @@ extra-source-files:
 
 dependencies:
 - base >= 4.7 && < 5
+- megaparsec >= 9.0
+- text >= 2.0
 
 library:
   source-dirs: src
@@ -20,6 +22,9 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - cswk-program
+    when:
+    - condition: false
+      other-modules: Paths_cswk_program
 
 tests:
   cswk-program-test:
