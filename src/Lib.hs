@@ -3,6 +3,9 @@ module Lib
     ) where
 
 import HandParser ( parseHand, handFromStr )
+import HandRankings (getHandRanking, Ranking)
+import System.Console.ANSI (clearScreen)
+import Control.Exception
 
 {- NOTE that you are NOT obligated to keep any of the files from 
 the skeleton code, including this one. You should give your 
@@ -15,15 +18,16 @@ return the highest value poker hand that can be made from the parsed cards.
 
 start :: IO ()
 start = do
+    clearScreen
     startPrompt
     str <- getLine
-    -- putStrLn $ handFromStr str
-    putStrLn "uncomment line above"
+    putStrLn "\n"
+    print $ handFromStr str
+    print $ getHandRanking (handFromStr str)
+    putStrLn "\n"
 
 startPrompt :: IO ()
 startPrompt = do
-    putStrLn "\n\n-------------- WELCOME ! -------------"
-    putStrLn "Enter poker cards with spaces in between."
-    putStrLn "Values are: A23456789TJQK (note Ten is T not 10)"
-    putStrLn "Suits are: 's' for ♠, 'h' for ♥, 'd' for ♦, 'c' for ♣"
+    putStrLn "🃏 ♥♣♦♠ \ESC[1mPOKER HAND EVALUATOR\ESC[0m ♠♦♣♥ 🃏 "
+    putStrLn "\n\nEnter a 5 card poker hand... \n Values: A23456789TJQK (!! ten is T) \n Suits: 's'=♠, 'h'=♥, 'd'=♦, 'c'=♣"
     putStrLn "Enter: "

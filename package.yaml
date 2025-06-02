@@ -7,7 +7,11 @@ extra-source-files:
 dependencies:
 - base >= 4.7 && < 5
 - megaparsec >= 9.0
-- text >= 2.0
+- ansi-terminal
+- containers >= 0.4
+- tasty
+- tasty-hunit
+- tasty-quickcheck
 
 library:
   source-dirs: src
@@ -36,3 +40,6 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - cswk-program
+    - tasty
+    - tasty-hunit
+    - tasty-quickcheck
